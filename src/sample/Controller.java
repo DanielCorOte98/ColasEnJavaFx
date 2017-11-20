@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
@@ -18,6 +19,8 @@ public class Controller implements Initializable {
     ListView elementosLV;
     @FXML
     TextField insertarTxt, buscarTxt;
+    @FXML
+    Label textoLbl;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -27,7 +30,33 @@ public class Controller implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 cola.insertar(Integer.parseInt(insertarTxt.getText()));
-                elementosLV.getItems().addAll(cola.mostrar());
+                elementosLV.getItems().clear();
+                cola.mostrar(elementosLV);
+            }
+        });
+        this.extraerBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                cola.extraer();
+                elementosLV.getItems().remove(0);
+            }
+        });
+        this.vaciarBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                elementosLV.getItems().clear();
+            }
+        });
+        this.tamanoBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                textoLbl.setText("El tamaño de la cola es: "+String.valueOf(cola.tamano()));
+            }
+        });
+        this.buscarBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                textoLbl.setText("El número "+buscarTxt.getText()+" encontrado en "+cola.buscar(Integer.parseInt(buscarTxt.getText())));
             }
         });
     }

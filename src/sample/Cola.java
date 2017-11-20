@@ -1,5 +1,8 @@
 package sample;
 
+
+import javafx.scene.control.ListView;
+
 public class Cola {
     Controller c = new Controller();
     private Nodo frente;
@@ -8,6 +11,7 @@ public class Cola {
         this.frente = null;
 
     }
+    public int i=0;
 
     public void insertar(int valor) {
         Nodo nuevo = new Nodo(valor);
@@ -20,19 +24,24 @@ public class Cola {
             }
             temp.setProximo(nuevo);
         }
+        i++;
     }
 
-    public Object mostrar() {
-        if (frente != null) {
+    public void mostrar(ListView elementos){
+        if( frente != null){
             Nodo temp = frente;
-            while (temp != null) {
+            System.out.println("Los valores de la cola son: ");
+            while(temp != null){
+                System.out.println(temp.getValor());
+                elementos.getItems().addAll(temp.getValor());
                 temp = temp.getProximo();
-                return temp.getValor();
+
             }
-            return temp.getValor();
-        } else {
-            return "vacia";
+        }else{
+            System.out.println("La cola está vacía.");
+
         }
+
     }
 
     public int extraer() {
@@ -42,21 +51,26 @@ public class Cola {
             int valorExtraer = frente.getValor(); //variable temporal
             System.out.println("Valor extraido: " + frente.getValor());
             frente = frente.getProximo(); //cambiar el frente por el siguiente
-            return valorExtraer; //devolver el valor extraido de la cola
+            i=i-1;
+            return valorExtraer;
+            //devolver el valor extraido de la cola
         }
     }
-    public void buscar(int busqueda){
+    public int  tamano() {
+       return i;
+    }
+    int posicion =1;
+    public int buscar(int busqueda){
         try {
             Nodo temp = top;
-            int posicion =1;
             if(temp.getValor() == busqueda) {
-                System.out.println("Valor en la posicion 0");
+                return 0;
             }
             else{
                 while(temp != null){
                     if (temp.getProximo().getValor()== busqueda){
-                        System.out.println("Valor en la posicion " + posicion);
-                        break;
+                        return posicion;
+
                     }
                 posicion ++;
                     temp = temp.getProximo();
@@ -65,8 +79,9 @@ public class Cola {
 
                 }
 
-        }finally {
+       }finally {
             System.out.println("");
         }
+        return  posicion;
     }
 }
