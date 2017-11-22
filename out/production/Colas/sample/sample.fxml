@@ -21,7 +21,7 @@
             </Label>
             <TextField fx:id="insertarTxt" layoutX="14.0" layoutY="69.0" />
             <TextField fx:id="buscarTxt" layoutX="14.0" layoutY="121.0" />
-            <Button fx:id="insertarBtn" layoutX="175.0" layoutY="69.0" mnemonicParsing="false" text="Insertar" />
+            <Button fx:id="insertarBtn" defaultButton="true" layoutX="175.0" layoutY="69.0" mnemonicParsing="false" text="Insertar" />
             <Button fx:id="buscarBtn" layoutX="178.0" layoutY="121.0" mnemonicParsing="false" text="Buscar" />
             <Button fx:id="extraerBtn" layoutX="14.0" layoutY="196.0" mnemonicParsing="false" text="Extraer" />
             <Button fx:id="tamanoBtn" layoutX="89.0" layoutY="196.0" mnemonicParsing="false" text="Tamaño" />

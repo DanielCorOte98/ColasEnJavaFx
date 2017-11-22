@@ -56,32 +56,34 @@ public class Cola {
             //devolver el valor extraido de la cola
         }
     }
-    public int  tamano() {
+    public int  tamano()
+    {
        return i;
     }
     int posicion =1;
+
     public int buscar(int busqueda){
+        posicion=1;
         try {
-            Nodo temp = top;
+            Nodo temp = frente;
             if(temp.getValor() == busqueda) {
                 return 0;
-            }
-            else{
+            }else{
                 while(temp != null){
                     if (temp.getProximo().getValor()== busqueda){
-                        return posicion;
+                        return posicion++;
 
                     }
-                posicion ++;
                     temp = temp.getProximo();
+                    posicion ++;
                 }
 
 
                 }
-
+                return posicion;
        }finally {
-            System.out.println("");
+            System.out.println("¡Número o valor no encontrado!");
         }
-        return  posicion;
+
     }
 }

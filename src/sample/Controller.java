@@ -32,6 +32,7 @@ public class Controller implements Initializable {
                 cola.insertar(Integer.parseInt(insertarTxt.getText()));
                 elementosLV.getItems().clear();
                 cola.mostrar(elementosLV);
+                insertarTxt.clear ();
             }
         });
         this.extraerBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -56,7 +57,8 @@ public class Controller implements Initializable {
         this.buscarBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                textoLbl.setText("El número "+buscarTxt.getText()+" encontrado en "+cola.buscar(Integer.parseInt(buscarTxt.getText())));
+               textoLbl.setText("El número "+buscarBtn.getText()+"\n  encontrado en la \n posición "+cola.buscar(Integer.parseInt(buscarTxt.getText())));
+
             }
         });
     }
