@@ -29,16 +29,17 @@ public class Controller implements Initializable {
         this.insertarBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                textoLbl.setText("Insertado "+insertarTxt.getText());
                 cola.insertar(Integer.parseInt(insertarTxt.getText()));
                 elementosLV.getItems().clear();
+                insertarTxt.clear();
                 cola.mostrar(elementosLV);
-                insertarTxt.clear ();
             }
         });
         this.extraerBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                cola.extraer();
+                textoLbl.setText("Número Extraido: "+cola.extraer());
                 elementosLV.getItems().remove(0);
             }
         });
@@ -46,19 +47,20 @@ public class Controller implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 elementosLV.getItems().clear();
+                cola.vaciar();
+                textoLbl.setText("Vaciado");
             }
         });
         this.tamanoBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                textoLbl.setText("El tamaño de la cola es: "+String.valueOf(cola.tamano()));
+                textoLbl.setText("El tamaño de la\ncola es: "+String.valueOf(cola.tamano()));
             }
         });
         this.buscarBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-               textoLbl.setText("El número "+buscarBtn.getText()+"\n  encontrado en la \n posición "+cola.buscar(Integer.parseInt(buscarTxt.getText())));
-
+                textoLbl.setText("El número "+buscarTxt.getText()+"\nencontrado en\nla posición: "+cola.buscar(Integer.parseInt(buscarTxt.getText())));
             }
         });
     }
